@@ -22,22 +22,9 @@ import { EditUserFormComponent } from './components/dashboard/edit-user-form/edi
 import { ProfileAuthComponent } from './components/dashboard/profile-auth/profile-auth.component';
 import { ProfileHelpComponent } from './components/dashboard/profile-help/profile-help.component';
 import { authGuard } from './pageGuard/auth.guard';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LandingpageComponent } from './components/landingpage/landingpage.component';
-import { InventorymanagementComponent } from './components/inventorymanagement/inventorymanagement.component';
-import { PosComponent } from './components/pos/pos.component';
-import { CardpaymentComponent } from './components/cardpayment/cardpayment.component';
-import { AboutComponent } from './components/about/about.component';
-import { ReceiptComponent } from './components/receipt/receipt.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: LandingpageComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'receipt', component: ReceiptComponent },
-  { path: 'card', component: CardpaymentComponent },
-  { path: 'pos', component: PosComponent },
-  { path: 'inventory', component: InventorymanagementComponent },
   { path: 'signup', component: SignupComponent, canActivate:[authGuard] },
   { path: 'login', component: SinginComponent },
   { path: 'password-reset', component: PasswordresetComponent },
