@@ -15,45 +15,44 @@
         </div>
     </div>
 
-    <div class="grid md:grid-cols-4 grid-cols-1 gap-[3rem]">
-        <div class="bg-[#fff] rounded-[11px] p-[2rem] grid gap-[2rem]">
-            <h1 class="text-[#A1A0BD] ">Total Income</h1>
+    <div class="grid lg:grid-cols-4 grid-cols-1 gap-[2rem]">
+        <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
+            <div class="text-[#A1A0BD] lg:text-[18px]">Total Income</div>
             <p class="leading-[35px] font-[800] color-[#000] text-[29px]">N {{analyticsOverview?.totalIncome}} <span></span></p>
-            <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-[40%] flex justify-center p-[1rem] gap-[1rem]">
+            <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
                 <div class="flex justify-center">
-                    <img src="/assets/images/graphArrowUp.png" alt="">
+                    <!-- <img src="/assets/images/graphArrowUp.png" alt=""> -->
                 </div>
-                <span>+ 11 %</span>
+                <span class="whitespace-nowrap">+ 11 %</span>
             </div>
         </div>
 
-        <div class="bg-[#fff] rounded-[11px] p-[2rem] grid gap-[2rem]">
-            <h1 class="text-[#A1A0BD] text-[16px]">Total Transactions</h1>
+        <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
+            <div class="text-[#A1A0BD] lg:text-[18px]">Total Transactions</div>
             <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.terminal}}</p>
-            <div class="bg-[#F5DCDC] rounded-[19px] text-[#D14F4F] w-[40%] flex justify-center p-[1rem] gap-[1rem]">
+            <div class="bg-[#F5DCDC] rounded-[19px] text-[#D14F4F] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
                 <div class="flex justify-center">
-                    <img src="/assets/images/graphArrowDown.png" alt="">
+                    <!-- <img src="/assets/images/graphArrowDown.png" alt=""> -->
 
                 </div>
-                <span>+ 11 %</span>
+                <span class="whitespace-nowrap">+ 11 %</span>
             </div>
         </div>
-        <div class="bg-[#fff] rounded-[11px] p-[2rem] grid gap-[2rem]">
-            <h1 class="text-[#A1A0BD] ">Total Terminals</h1>
+        <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
+            <div class="text-[#A1A0BD] lg:text-[18px] ">Total Terminals</div>
             <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.totalTransaction}}</p>
-            <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-[40%] flex justify-center p-[1rem] gap-[1rem]">
+            <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
                 <div class="flex justify-center">
-                    <img src="/assets/images/graphArrowUp.png" alt="">
-
+                    <!-- <img src="/assets/images/graphArrowUp.png" alt=""> -->
                 </div>
-                <span>+ 11 %</span>
+                <span class="whitespace-nowrap">+ 11 %</span>
             </div>
         </div>
-        <div class="bg-[#fff] rounded-[11px] p-[2rem] grid gap-[2rem]">
-            <h1 class="text-[#A1A0BD] ">Upcoming </h1>
+        <div class="bg-[#fff] rounded-[11px] p-[2rem]  grid gap-[1rem]">
+            <div class="text-[#A1A0BD] lg:text-[18px] ">Upcoming </div>
             <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.upcoming}}</p>
-            <div class="border border-[#4C49ED] rounded-[19px] w-[40%] flex justify-center p-[1rem] gap-[1rem]">
-                <div class="text-[#4C49ED] text-[12px]">
+            <div class="border border-[#4C49ED] rounded-[19px] w-fit  flex justify-center items-center px-[1rem] gap-[1rem]">
+                <div class="text-[#4C49ED] text-[12px] whitespace-nowrap">
                     View Details
                 </div>
             </div>
@@ -67,12 +66,12 @@
                 <div class="w-[100%] grid md:grid-cols-10 grid-cols-1 gap-[2rem]">
                     <div class="md:col-span-2 col-span-1  p-[1rem] py-[0.5rem] bg-[#fff] rounded-[8px]">
                         <input id="countries" type="date" placeholder="hello"
-                            class="bg-[#fff] outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-[#fff] outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
                     </div>
                     <div class="md:col-span-2 col-span-1 p-[1rem] py-[0.5rem] bg-[#fff] rounded-[8px]">
                         <select id="countries"
-                            class=" outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class=" outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>
                                 <div><img src="/assets/images/flag.png" alt=""></div>
                                 <span>Date Range</span>
@@ -84,7 +83,7 @@
                     </div>
                     <div class="md:col-span-3 col-span-1 p-[1rem] py-[0.5rem] bg-[#fff] rounded-[8px]">
                         <select id="countries"
-                            class="outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Paystack</option>
                             <option value="US">Remiter</option>
                             <option value="CA">Interswitch</option>
@@ -93,7 +92,7 @@
                     </div>
                     <div class="md:col-span-3 col-span-1 p-[1rem] py-[0.5rem] bg-[#fff] rounded-[8px]">
                         <select id="countries"
-                            class="outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Status</option>
                             <option value="US">All</option>
                             <option value="CA">Succeded</option>
@@ -110,7 +109,7 @@
                     <img src="/assets/images/inputSearch.png" alt="">
                 </div>
                 <input type="text" id="table-search"
-                    class="block p-2 w-[90%] bg-[#FBFBFB] text-gray-900 outline-none  rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="block p-2 w-[90%] bg-[#FBFBFB] text-gray-900 outline-none  rounded-lg focus:ring-blue-500 focus:border-blue-500 "
                     placeholder="Search by amount , payment method...">
             </div>
         </div>
@@ -122,14 +121,14 @@
     <!-- Table =============== -->
     <div class="relative overflow-x-auto sm:rounded-lg">
 
-        <table class="w-full text-[14px] leading-[150%] text-[#4B5563] text-left dark:text-gray-400">
+        <table class="w-full text-[14px] leading-[150%] text-[#4B5563] text-left">
             <thead
-                class="text-[14px] italic font-[100]  text-[#374151] uppercase bg-[#fff]  dark:bg-gray-700 dark:text-gray-400">
+                class="text-[14px] italic font-[100]  text-[#374151] uppercase bg-[#fff]">
                 <tr class="border-b">
                     <th scope="col" class="p-[2rem]">
                         <div class="flex items-center">
                             <input id="checkbox-all-search" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
                             <label for="checkbox-all-search" class="sr-only">Payment ID</label>
                         </div>
                     </th>
@@ -154,15 +153,15 @@
             </thead>
             <tbody>
                 <tr *ngFor="let terminal of data"
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    class="bg-white border-b hover:bg-gray-50">
                     <td class="w-4 p-[2rem]">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-3" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
                             <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
                         </div>
                     </td>
-                    <th scope="row" class="p-[2rem] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="p-[2rem] font-medium text-gray-900 whitespace-nowrap">
                         {{terminal.paymentId}}
                     </th>
                     <td class="p-[1rem]">

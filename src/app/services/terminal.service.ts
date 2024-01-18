@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { baseURL } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -17,28 +18,28 @@ export class TerminalService {
     console.log("hello world");
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/json')
-    return this.http.post<any>(`${this.baseURL}api/v1/terminal/terminal_request`, userDetails);
+    return this.http.post<any>(`${baseURL}api/v1/terminal/terminal_request`, userDetails);
   }
 
   terminalRefundRequest(userDetails:any){
     console.log("hello world");
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/json')
-    return this.http.post<any>(`${this.baseURL}api/v1/terminal/refund/terminal_refund_request`, userDetails);
+    return this.http.post<any>(`${baseURL}api/v1/terminal/refund/terminal_refund_request`, userDetails);
   }
 
   accountLogin(authCredentials:any){
     console.log("hello world");
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/json')
-    return this.http.post<any>(this.baseURL, authCredentials);
+    return this.http.post<any>(baseURL, authCredentials);
   }
 
   passwordReset(usersDetail:any){
     console.log("hello world");
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/json')
-    return this.http.post<any>(this.baseURL, usersDetail);
+    return this.http.post<any>(baseURL, usersDetail);
   }
 
   getTerminals(): Observable<any> {
@@ -53,17 +54,17 @@ export class TerminalService {
   getTransactions(page: number, size:number): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authToken}`
+      'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.get<any>(`${this.baseURL}api/v1/analytic/transactions?page=${page}&size=${size}`, { headers: headers });
+    return this.http.get<any>(`${baseURL}api/v1/analytic/transactions?page=${page}&size=${size}`, { headers: headers });
   }
   
   getAnalyticsOverview(): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authToken}`
+      'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.get<any>(`${this.baseURL}api/v1/analytic/terminal_statistic`, { headers: headers });
+    return this.http.get<any>(`${baseURL}api/v1/analytic/terminal_statistic`, { headers: headers });
   }
   
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { TokenService } from './token.service';
+import { baseURL } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -86,15 +87,17 @@ export class AuthService {
     console.log("hello world");
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/json')
-    return this.http.post<any>(`${this.baseURL}api/v1/authenticate/auth`, authCredentials);
+    return this.http.post<any>(`${baseURL}api/v1/authenticate/auth`, authCredentials);
   }
 
   validateToken(tokenDetails: any): Observable<any>{
+    console.log("token ===>> " + TokenService.getToken());
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authToken}`
+      'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.post<any>(`${this.baseURL}api/v1/authenticate/login`, tokenDetails, { headers: headers });
+    console.log("token 2 ===>> " + TokenService.getToken());
+    return this.http.post<any>(`${baseURL}api/v1/authenticate/login`, tokenDetails, { headers: headers });
   }
 
   forgotPasswordAuth(authCredentials:any): Observable<any>{
