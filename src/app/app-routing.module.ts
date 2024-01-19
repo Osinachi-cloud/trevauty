@@ -21,11 +21,58 @@ import { UserProfileComponent } from './components/dashboard/user-profile/user-p
 import { EditUserFormComponent } from './components/dashboard/edit-user-form/edit-user-form.component';
 import { ProfileAuthComponent } from './components/dashboard/profile-auth/profile-auth.component';
 import { ProfileHelpComponent } from './components/dashboard/profile-help/profile-help.component';
-import { authGuard } from './pageGuard/auth.guard';
+// import { authGuard } from './pageGuard/auth.guard';
+
+
+// const routes: Routes = [
+//   { path: 'signup', component: SignupComponent, canActivate:[authGuard] },
+//   { path: 'login', component: SinginComponent },
+//   { path: 'password-reset', component: PasswordresetComponent },
+//   { path: 'dashboard', component: DashboardComponent, children: [
+//     { path: '', redirectTo: 'overview', pathMatch: 'full' },
+//     { path: 'overview', component: OverviewComponent },
+//     { path: 'analytic', component: AnalyticComponent },
+//     { path: 'manage-terminal', component: ManageTerminalComponent, children:[
+//       { path: '', component: ManageTerminalHomeComponent, children:[
+//         { path:"", redirectTo: 'list', pathMatch: 'full'},
+//         { path:"list", component: OverviewterminalListComponent },
+//         { path:"request", component: NewterminalrequestComponent },
+//         { path:"deactivate", component: DeactivateTerminalsComponent }
+//       ]},
+//     ] },
+//     { path:'refund-transaction', component: RefundTransactionComponent, children:[
+//       { path: '', component: RefundTransactionHomeComponent, children:[
+//         { path:"", redirectTo: 'list', pathMatch: 'full'},
+//         { path:"list", component: OverviewRefundTransactionsComponent },
+//         { path:"refund", component: NewRefundFormComponent },
+//       ]}
+//     ]},
+//     { path:'profile', component: ProfileComponent, children:[
+//       { path: '', component: ProfileHomeComponent, children:[
+//         { path:"", redirectTo: 'user', pathMatch: 'full'},
+//         { path:"user", component: UserProfileComponent },
+//         { path:"edit-user", component: EditUserFormComponent },
+//         { path:"auth", component: ProfileAuthComponent },
+//         { path:"help", component:ProfileHelpComponent },
+//       ]}
+//     ]}
+//   ], canActivate:[authGuard]},
+//   { path: '**', redirectTo: 'login' }
+
+// ];
+
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule]
+// })
+// export class AppRoutingModule { }
+
+
+
 
 
 const routes: Routes = [
-  { path: 'signup', component: SignupComponent, canActivate:[authGuard] },
+  { path: 'signup', component: SignupComponent},
   { path: 'login', component: SinginComponent },
   { path: 'password-reset', component: PasswordresetComponent },
   { path: 'dashboard', component: DashboardComponent, children: [
@@ -56,7 +103,7 @@ const routes: Routes = [
         { path:"help", component:ProfileHelpComponent },
       ]}
     ]}
-  ], canActivate:[authGuard]},
+  ]},
   { path: '**', redirectTo: 'login' }
 
 ];
@@ -66,3 +113,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
