@@ -48,24 +48,6 @@
                             <p>Active</p>
                         </div>
                         <div class="text-[20px] leading-[30px] text-[#15192C]">
-                            <p>{{overviewReport?.balance}}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="col-span-1 flex md:justify-center p-[2rem] items-center  md:border-r border-b md:border-b-0">
-
-                    <div class="mr-[8px] flex justify-center items-center bg-[#CEE0F3] rounded-[16px] p-[2rem]">
-                        <img src="/assets/images/Profile.png" />
-                    </div>
-                    <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
-
-
-                        <div class="">
-                            <p>Users</p>
-                        </div>
-                        <div class="text-[20px] leading-[30px] text-[#15192C]">
                             <p>{{overviewReport?.numberOfTerminals}}</p>
                         </div>
                     </div>
@@ -84,7 +66,25 @@
                             <p>Users</p>
                         </div>
                         <div class="text-[20px] leading-[30px] text-[#15192C]">
-                            <p>{{overviewReport?.numberOfTerminals}}</p>
+                            <p>{{overviewReport?.activeTerminal}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="col-span-1 flex md:justify-center p-[2rem] items-center  md:border-r border-b md:border-b-0">
+
+                    <div class="mr-[8px] flex justify-center items-center bg-[#CEE0F3] rounded-[16px] p-[2rem]">
+                        <img src="/assets/images/Profile.png" />
+                    </div>
+                    <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
+
+
+                        <div class="">
+                            <p>Users</p>
+                        </div>
+                        <div class="text-[20px] leading-[30px] text-[#15192C]">
+                            <p>{{overviewReport?.numberOfUsers}}</p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             <p>Balance</p>
                         </div>
                         <div class="text-[20px] leading-[30px] text-[#15192C]">
-                            <p class="whitespace-nowrap">{{overviewReport?.numberOfUsers}}</p>
+                            <p class="whitespace-nowrap">{{overviewReport?.balance}}</p>
                         </div>
                     </div>
                 </div>
@@ -116,22 +116,25 @@
                         </div>
                     </div>
 
-                    <div class="" *ngFor="let deposit of deposits">
-                        <div class="">
+                    <div class="mb-[1rem]" *ngFor="let deposit of deposits">
+                        <div class="flex w-full gap-[1rem]">
                             <div class="">
-                                <img src="/assets/images/calc.png" />
+                                <img src="/assets/images/calc.png" alt="dummy"/>
                             </div>
-                            <div class="">
+                            <div class="w-[100%] flex justify-between">
                                 <div class="">
-                                    <p>{{deposit?.location}}</p>
+                                    <div class="text-[12px] font-[800]">
+                                        <p>{{deposit?.location}}</p>
+                                    </div>
+                                    <div class="text-[12px] font-[500]">
+                                        <p>{{deposit?.operatorName}}</p>
+                                    </div>
                                 </div>
-                                <div class="">
-                                    <p>{{deposit?.operatorName}}</p>
+                                <div class="text-[green]">
+                                    <p class="">+N{{deposit?.amount}}</p>
                                 </div>
                             </div>
-                            <div class="">
-                                <p>+N{{deposit?.amount}}</p>
-                            </div>
+  
                         </div>
                     </div>
 

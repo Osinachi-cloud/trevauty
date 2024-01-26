@@ -56,7 +56,7 @@ export class TerminalService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.get<any>(`${baseURL}api/v1/analytic/transactions?page=${page}&size=${size}`, { headers: headers });
+    return this.http.post<any>(`${baseURL}api/v1/analytic/transactions?page=${page}&size=${size}`,{body: {}}, { headers: headers });
   }
   
   getAnalyticsOverview(): Observable<any>{
@@ -64,7 +64,7 @@ export class TerminalService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.get<any>(`${baseURL}api/v1/analytic/terminal_statistic`, { headers: headers });
+    return this.http.post<any>(`${baseURL}api/v1/analytic/terminal_statistic`,{body: {}}, { headers: headers });
   }
   
 }

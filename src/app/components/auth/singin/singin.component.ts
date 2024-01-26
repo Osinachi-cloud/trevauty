@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgxOtpInputConfig } from 'ngx-otp-input';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth.service';
+import { UtilService } from 'src/app/services/util.service';
 // import {Component} from '@angular/core';
 
 
@@ -151,6 +152,8 @@ console.log(this.formSubmitted);
       }
       this.authService.validateToken(optObj).subscribe({
         next:(res: any)=>{
+          // console.log("================")
+          // UtilService.setUserDetails(res.data);
           console.log(res)
   
         },
@@ -173,6 +176,7 @@ console.log(this.formSubmitted);
       this.authService.validateToken(JSON.stringify(optObj)).subscribe({
         next:(res: any)=>{
           console.log(res);
+          UtilService.setUserDetails(res.data);
           this.router.navigate(['dashboard']);
           window.localStorage.setItem('token', res?.token);
           console.log("success");

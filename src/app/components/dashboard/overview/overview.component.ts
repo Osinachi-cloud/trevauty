@@ -9,7 +9,7 @@ import { DashboardService } from 'src/app/dashboard.service';
 export class OverviewComponent{
 
   overviewReport: any;
-  deposits:any;
+  deposits:any = [];
   withdrawal:any;
   constructor( private dashboardService: DashboardService){
     
@@ -36,8 +36,8 @@ export class OverviewComponent{
     getDeposit(): void {
       this.dashboardService.getDeposit().subscribe({
         next: (response) => {
-          console.log("response =>>>>", response);
-          this.deposits = response.content;
+          console.log("response =>>>> array", response);
+          this.deposits = response?.data?.content;
           console.log(this.deposits);
         },
         error: (error) => {

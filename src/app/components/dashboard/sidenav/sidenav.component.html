@@ -13,10 +13,10 @@
             <div class="md:col-span-4 col-span-1 p-[1rem] py-[0.5rem] bg-[#fff] rounded-[8px]">
                 <select id="countries"
                     class="outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    <option selected>Ogbodo Uchenna</option>
-                    <option value="US">Remiter</option>
+                    <option selected>{{userDetails.firstName}} {{userDetails.lastName}}</option>
+                    <!-- <option value="US">Remiter</option>
                     <option value="CA">Interswitch</option>
-                    <option value="FR">Flutterwave</option>
+                    <option value="FR">Flutterwave</option> -->
                 </select>
 
             </div>
@@ -62,7 +62,8 @@
                     [routerLink]="[data.routeLink]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"
                     (click)="shrinkItems(data)">
                     <!-- <i class="sidenav-link-icon" [class]="data.icon"></i> -->
-                    <img class="sidenav-link-icon" [src]="data.icon">
+                    <!-- <img class="sidenav-link-icon" [src]="data.icon"> -->
+                    <i class="text-[2rem] font-[900]" [class]="data.icon"></i>
 
 
                     <span class="sidenav-link-text" *ngIf="collapsed">
@@ -88,7 +89,7 @@
                         [expanded]="data.expanded"></app-sublevel-menu>
                 </div>
             </li>
-            <li class="log-out">
+            <li (click)="logOut()" class="log-out flex">
                 <div>
                     <img class="sidenav-link-icon" src="/assets/images/Logout.png">
                 </div>

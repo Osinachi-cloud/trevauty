@@ -17,6 +17,16 @@ export class AnalyticComponent {
 
   }
 
+  terminalFilterRequest = {
+    status: null,
+    paymentId: null,
+    creationDate: null,
+    page: 0,
+    size: 10
+  }
+  numOfPages: number = 0;
+  totalNumOfEntry: number = 0;
+
   constructor(private terminalService: TerminalService) { }
 
   ngOnInit(): void {
@@ -29,7 +39,9 @@ export class AnalyticComponent {
     this.terminalService.getTransactions(this.page, this.size).subscribe({
       next: (response: any) => {
         this.apiResponse = response;
-        this.data = this.apiResponse?.content;
+        this.data = this.apiResponse?.data?.content;
+        this.totalNumOfEntry = this.apiResponse?.data?.totalElements;
+        this.getNumberOfPages(this.totalNumOfEntry);
         console.log(this.data);
       },
       error: (items: any) => {
@@ -37,6 +49,7 @@ export class AnalyticComponent {
       }
     })
   }
+
 
   getAnalyticsOverview(): void {
     this.terminalService.getAnalyticsOverview().subscribe({
@@ -61,6 +74,30 @@ export class AnalyticComponent {
     console.log("hello 2");
     if (this.page > 1) {
       this.page - 1;
+      this.getTerminals();
+    }
+  }
+
+  getNumberOfPages(totalEntry: number): void {
+    console.log(totalEntry);
+    console.log(this.terminalFilterRequest.size);
+    if (totalEntry % this.terminalFilterRequest.size == 0) {
+      this.numOfPages = totalEntry / this.terminalFilterRequest.size;
+    } else {
+      this.numOfPages = 1 + Math.floor(totalEntry / this.terminalFilterRequest.size);
+    }
+  }
+
+  nextPage(): void {
+    if (this.terminalFilterRequest.page + 1 < this.numOfPages) {
+      this.terminalFilterRequest.page = this.terminalFilterRequest.page + 1;
+      this.getTerminals();
+    }
+  }
+
+  previousPage(): void {
+    if (this.terminalFilterRequest.page + 1 > 1) {
+      this.terminalFilterRequest.page = this.terminalFilterRequest.page - 1;
       this.getTerminals();
     }
   }

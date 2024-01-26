@@ -96,7 +96,7 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    console.log("token 2 ===>> " + TokenService.getToken());
+    console.log({headers});
     return this.http.post<any>(`${baseURL}api/v1/authenticate/login`, tokenDetails, { headers: headers });
   }
 

@@ -182,7 +182,7 @@
                             <span class="text-[#B5850B]">Pending</span>
                         </div>
 
-                        <div *ngIf="terminal.status === 'succeded' "
+                        <div *ngIf="terminal.status === 'SUCCEEDED' "
                             class="bg-[#EDFFEA] p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
                             <div>
                                 <img src="/assets/images/success.png" alt="">
@@ -190,7 +190,7 @@
                             <span class="text-[#165E3D]">Succeded</span>
                         </div>
 
-                        <div *ngIf="terminal.status === 'rejected' "
+                        <div *ngIf="terminal.status === 'DECLINED' "
                             class="bg-[#FFEAEA] p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
                             <div>
                                 <img src="/assets/images/declined.png" alt="">
@@ -210,7 +210,7 @@
                                 <img src="/assets/images/mastercard-logo.png" alt="">
                             </div>
                             <div>
-                                {{terminal.cardRef}}
+                                {{terminal.paymentMethod}}
 
                             </div>
                         </div>
@@ -230,13 +230,13 @@
         </table>
         <div class="mt-[4rem] bg-[#fff] flex justify-between p-[1rem] px-[2rem]">
             <div>
-                <span> {{size}} Result</span>
+                <span> {{totalNumOfEntry}} Result</span>
             </div>
-            <div class="flex justify-end gap-[2rem] md:mr-[20rem]">
-                <div (click)="pageIncrement()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
+            <div class="flex justify-end gap-[2rem]">
+                <div (click)="previousPage()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
                     Previous
                 </div>
-                <div (click)="pageDecrement()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
+                <div (click)="nextPage()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
                     Next
                 </div>
             </div>

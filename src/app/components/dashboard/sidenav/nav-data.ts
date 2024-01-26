@@ -4,7 +4,7 @@ export const navbarData: INavbarData[] = [
 
     {
         routeLink: 'overview',
-        icon: 'assets/icons/Document.png',
+        icon: 'fas fa-eye',
         label: 'Overview',
         // items: [
         //     {
@@ -39,12 +39,12 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'analytic',
-        icon: 'assets/icons/Wallet.png',
+        icon: 'fas fa-chart-line',
         label: 'Analytic'
     },
     {
-        routeLink: 'manage-terminal',
-        icon: 'fal fa-tags',
+        routeLink: 'manage-terminal/*',
+        icon: 'fas fa-cash-register',
         label: 'Manage Terminal',
         // items: [
         //     {
@@ -59,7 +59,7 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'refund-transaction',
-        icon: 'assets/icons/Stroke 1.png',
+        icon: 'fas fa-arrow-left',
         label: 'Refund Transactions'
     },
     // {
@@ -69,7 +69,7 @@ export const navbarData: INavbarData[] = [
     // },
     {
         routeLink: 'profile',
-        icon: 'assets/icons/Profile.png',
+        icon: 'fa fa-user',
         label: 'Profile'
     }
     ,

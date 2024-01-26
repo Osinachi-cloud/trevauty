@@ -127,7 +127,8 @@ export class DashboardService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${TokenService.getToken()}`
       });
-      return this.http.get<any>(`${baseURL}api/v1/analytic/dashboard`, { headers: headers });
+      console.log({headers});
+      return this.http.post<any>(`${baseURL}api/v1/analytic/dashboard`, {body: {}}, { headers: headers });
     }
 
     getDeposit(): Observable<any>{
@@ -135,7 +136,10 @@ export class DashboardService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${TokenService.getToken()}`
       });
-      return this.http.get<any>(`${baseURL}api/v1/analytic/deposit_data?page=0&size=5`, { headers: headers });
+      return this.http.post<any>(`${baseURL}api/v1/analytic/deposit_data?page=0&size=5`, {body: {}} , { headers: headers });
+      // return this.http.get<any>(`https://fakestoreapi.com/products`, { headers: headers }); 
+      // return this.http.post<any>(`${baseURL}api/v1/authenticate/test`, { headers: headers }); 
+
     }
 
     getWithdrawal(): Observable<any>{
@@ -162,7 +166,5 @@ export class DashboardService {
       });
       return this.http.get<any>(`${baseURL}api/v1/analytic/transactions`, { headers: headers });
     }
-
-    
 
 }
