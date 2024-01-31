@@ -22,7 +22,7 @@ export class AnalyticComponent {
     paymentId: null,
     creationDate: null,
     page: 0,
-    size: 10
+    size: 5
   }
   numOfPages: number = 0;
   totalNumOfEntry: number = 0;
@@ -35,8 +35,8 @@ export class AnalyticComponent {
   }
 
   getTerminals(): void {
-    console.log(this.page, this.size);
-    this.terminalService.getTransactions(this.page, this.size).subscribe({
+    console.log(this.terminalFilterRequest.page, this.terminalFilterRequest.size);
+    this.terminalService.getTransactions(this.terminalFilterRequest.page, this.terminalFilterRequest.size).subscribe({
       next: (response: any) => {
         this.apiResponse = response;
         this.data = this.apiResponse?.data?.content;
@@ -100,6 +100,11 @@ export class AnalyticComponent {
       this.terminalFilterRequest.page = this.terminalFilterRequest.page - 1;
       this.getTerminals();
     }
+  }
+
+  getSize(size: number): void {
+    this.terminalFilterRequest.size = size;
+    this. getTerminals();
   }
 
 }

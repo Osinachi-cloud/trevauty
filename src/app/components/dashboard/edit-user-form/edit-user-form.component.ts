@@ -33,14 +33,21 @@ export class EditUserFormComponent {
   get formData() { return this.userProfileDetails.controls; };
 
 
-  resetFormInputs(){
-    this.userProfileDetails.setValue({
-      firstName:"",
-      lastName:"",
-      email:"",
-      about:""
-    })
-  }
+  // resetFormInputs(){
+  //   this.userProfileDetails.setValue({
+  //     firstName:"",
+  //     lastName:"",
+  //     email:"",
+  //     about:""
+  //   })
+  // }
+
+  resetFormInputs() {
+    this.userProfileDetails.reset();
+    Object.keys(this.userProfileDetails.controls).forEach(key => {
+        this.userProfileDetails.get(key)?.setErrors(null); 
+    });
+}
 
   validateForm(){
     for(let i in this.userProfileDetails.controls)
@@ -54,7 +61,7 @@ export class EditUserFormComponent {
   onSubmit(user: any): void {
       if (this.userProfileDetails.valid) {
         console.log({ user });
-        this.authService.accountLogin(this.userProfileDetails.value).subscribe({
+        this.authService.profileSetting(this.userProfileDetails.value).subscribe({
           next: (response) => {
             console.log("response =>>>>", response);
             this.apiResponse = response;
@@ -62,11 +69,11 @@ export class EditUserFormComponent {
             this.resetFormInputs();
             this.showSuccess()
             
-            // this.router.navigate(['login']);
           },
           error: (error) => {
             console.log("sign up failed", error);
-            this.router.navigate([]);
+            this.resetFormInputs();
+            // this.router.navigate([]);
           }
         });
       } else {

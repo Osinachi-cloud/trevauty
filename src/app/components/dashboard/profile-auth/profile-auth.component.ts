@@ -80,13 +80,20 @@ export class ProfileAuthComponent {
     }
   }
 
+  // resetFormInput() {
+  //   this.passwordResetDetails.setValue({
+  //     password: "",
+  //     newPassword: "",
+  //     confirmNewPassword :''
+  //   })
+  // }
+
   resetFormInput() {
-    this.passwordResetDetails.setValue({
-      password: "",
-      newPassword: "",
-      confirmNewPassword :''
-    })
-  }
+    this.passwordResetDetails.reset(); 
+    Object.keys(this.passwordResetDetails.controls).forEach(key => {
+        this.passwordResetDetails.get(key)?.setErrors(null); 
+    });
+}
 
   showSuccess() {
     this.toast.success({detail:"SUCCESS",summary:this.apiResponse.displayMessage ,duration:5000});

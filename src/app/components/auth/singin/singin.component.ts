@@ -62,17 +62,25 @@ for(let i in this.authForm.controls)
   this.authForm.controls[i].markAsTouched();
 }
 
-showSuccess(message: string) {
-  this.toast.success({detail:message,summary:this.apiResponse?.displayMessage ,duration:5000});
-}
+// showSuccess(message: string) {
+//   this.toast.success({detail:message,summary:this.apiResponse?.displayMessage ,duration:5000});
+// }
 
-showError(message: string) {
-  this.toast.error({detail:message,summary:this.apiResponse?.displayMessage ,duration:5000});
+// showError(message: string) {
+//   this.toast.error({detail:message,summary:this.apiResponse?.displayMessage ,duration:5000});
+// }
+
+
+showSuccessResponse(message: string, header: string, duration: number) {
+  this.toast.success({ detail: message, summary: header, duration: duration });
+}
+showErrorResponse(message: string, header: string, duration: number) {
+  this.toast.error({ detail: message, summary: header, duration: duration });
 }
 
 
 ngOnInit(): void {
-  this.showSuccess(this.message);
+  // this.showSuccess(this.message);
 console.log(this.formSubmitted);
 }
 
@@ -87,11 +95,18 @@ toggleShowPassword(){
   }
 }
 
+// resetFormInputs() {
+//   this.authForm.setValue({
+//     email: '',
+//     password: '',
+//     keepMeLoggedIn: '',
+//   });
+// }
+
 resetFormInputs() {
-  this.authForm.setValue({
-    email: '',
-    password: '',
-    keepMeLoggedIn: '',
+  this.authForm.reset();
+  Object.keys(this.authForm.controls).forEach(key => {
+      this.authForm.get(key)?.setErrors(null); 
   });
 }
 
@@ -109,7 +124,7 @@ console.log(this.formSubmitted);
         this.resetFormInputs();
         this.message = response?.response;
         window.localStorage.setItem("token", response?.token);
-        this.showSuccess(this.message);
+        this.showSuccessResponse(this.message, "Login", 3000);
 
         this.toggleModal();
         
@@ -119,7 +134,7 @@ console.log(this.formSubmitted);
         console.log("sign up failed", error);
         let errRes = error?.response;
         let errReason = error?.debugMessage;
-        this.showError(errRes + errReason);
+        this.showErrorResponse(errRes + errReason || "Netword error", "Login Failed", 3000);
         this.router.navigate([]);
       }
     });
@@ -179,6 +194,8 @@ console.log(this.formSubmitted);
           UtilService.setUserDetails(res.data);
           this.router.navigate(['dashboard']);
           window.localStorage.setItem('token', res?.token);
+          this.showSuccessResponse(this.message, "Login", 3000);
+
           console.log("success");
         },
         error:(err: any)=>{

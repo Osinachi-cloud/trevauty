@@ -1,87 +1,56 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ITerminal } from 'src/app/models/ITerminal';
+import { TerminalService } from 'src/app/services/terminal.service';
+import { ITerminalData, ITerminalReport } from 'src/app/types/Type';
+
 
 @Component({
   selector: 'app-overviewterminal-list',
   templateUrl: './overviewterminal-list.component.html',
   styleUrls: ['./overviewterminal-list.component.scss']
 })
+
+
+
 export class OverviewterminalListComponent implements OnInit {
 
-  topTerminalData = [
-    {
-      id:1,
-      source:"Lekki Phase 1",
-      visitors:2.2,
-      revenue:25.67,
-      sales:500,
-      conversion:50,
-    },
-    {
-      id:2,
-      source:"Ajah 1",
-      visitors:2.2,
-      revenue:25.67,
-      sales:500,
-      conversion:50,
-    },
-    {
-      id:3,
-      source:"Lekki Phase 1",
-      visitors:2.2,
-      revenue:25.67,
-      sales:500,
-      conversion:50,
-    },
-    {
-      id:4,
-      source:"Ajah 1",
-      visitors:2.2,
-      revenue:25.67,
-      sales:500,
-      conversion:50,
-    },
-  ]
+  constructor(private terminalService: TerminalService){
 
-  dataTerminal = [
-    {
-      id:1,
-      terminal:"Lekki Phase 1",
-      amount:5.00,
-      invoiceDate:"Jan 13,2023",
-      status:"paid",
-      action:""
-    },
-    {
-      id:2,
-      terminal:"Lekki Phase 1",
-      amount:5.00,
-      invoiceDate:"Jan 13,2023",
-      status:"paid",
-      action:""
-    },
-    {
-      id:3,
-      terminal:"Lekki Phase 1",
-      amount:5.00,
-      invoiceDate:"Jan 13,2023",
-      status:"paid",
-      action:""
-    },
-    {
-      id:4,
-      terminal:"Lekki Phase 1",
-      amount:5.00,
-      invoiceDate:"Jan 13,2023",
-      status:"unpaid",
-      action:""
-    },
-  ]
-
-  ngOnInit() {
-    this.loadData();
   }
 
-  loadData() {
-    console.log("hello world")
+  topTerminalData: ITerminalData[] = [];
+
+  dataTerminal : ITerminalReport [] = [];
+
+  data: any[] = []
+
+  ngOnInit(): void {
+  this.getTopTerminals();
+  this.getCustomerTerminals();
   }
+
+  getTopTerminals(){
+    this.terminalService.getTopTerminals().subscribe({
+      next:(items: any)=>{
+          this.topTerminalData = items;
+      },
+      error:(items:any)=>{
+
+      }
+    })
+  }
+
+  getCustomerTerminals(){
+    this.terminalService.customerTerminals().subscribe({
+      next:(items: any)=>{
+          this.dataTerminal = items;
+      },
+      error:(items:any)=>{
+
+      }
+    })
+  }
+
+  
+
 }

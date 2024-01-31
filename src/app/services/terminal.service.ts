@@ -21,6 +21,19 @@ export class TerminalService {
     return this.http.post<any>(`${baseURL}api/v1/terminal/terminal_request`, userDetails);
   }
 
+
+  toggleTerminalActiveState(terminalId:any){
+    console.log("hello world");
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getToken()}`
+    });
+    return this.http.post<any>(`${baseURL}api/v1/terminal/toggle-terminal-state?id=${terminalId}`,{ headers:headers }, {});
+  }
+
+
+
   terminalRefundRequest(userDetails:any){
     console.log("hello world");
     const headers = new HttpHeaders()
@@ -50,6 +63,24 @@ export class TerminalService {
     return this.http.get<any>('assets/data/actionTerminal.json');
   }
 
+  getTopTerminals(){
+    console.log("hello world");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getToken()}`
+    });
+    return this.http.post<any>(`${baseURL}api/v1/customer/top-terminals`,{ headers:headers }, {});
+  }
+
+  customerTerminals(){
+    console.log("hello world");
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getToken()}`
+    });
+    return this.http.post<any>(`${baseURL}api/v1/customer/terminals`,{ headers:headers }, {});
+  }
 
   getTransactions(page: number, size:number): Observable<any>{
     const headers = new HttpHeaders({

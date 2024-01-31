@@ -63,18 +63,25 @@ toggleShowConfirmPassword(){
   }
 }
 
+// resetFormInputs() {
+//   this.myform.setValue({
+//     firstName: '',
+//     lastName: '',
+//     phoneNumber: '',
+//     password: '',
+//     email: '',
+//     cOption: '',
+//     optionsRadios: '',
+//     agreeWithTermsAndCondition: '',
+//     address: '',
+//     dBirth: ''
+//   });
+// }
+
 resetFormInputs() {
-  this.myform.setValue({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    password: '',
-    email: '',
-    cOption: '',
-    optionsRadios: '',
-    agreeWithTermsAndCondition: '',
-    address: '',
-    dBirth: ''
+  this.myform.reset();
+  Object.keys(this.myform.controls).forEach(key => {
+      this.myform.get(key)?.setErrors(null); 
   });
 }
 

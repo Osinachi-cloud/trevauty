@@ -18,7 +18,9 @@
     <div class="grid lg:grid-cols-4 grid-cols-1 gap-[2rem]">
         <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
             <div class="text-[#A1A0BD] lg:text-[18px]">Total Income</div>
-            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">N {{analyticsOverview?.totalIncome}} <span></span></p>
+            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">N {{analyticsOverview?.totalIncome}}
+                <span></span>
+            </p>
             <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
                 <div class="flex justify-center">
                     <!-- <img src="/assets/images/graphArrowUp.png" alt=""> -->
@@ -51,7 +53,8 @@
         <div class="bg-[#fff] rounded-[11px] p-[2rem]  grid gap-[1rem]">
             <div class="text-[#A1A0BD] lg:text-[18px] ">Upcoming </div>
             <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.upcoming}}</p>
-            <div class="border border-[#4C49ED] rounded-[19px] w-fit  flex justify-center items-center px-[1rem] gap-[1rem]">
+            <div
+                class="border border-[#4C49ED] rounded-[19px] w-fit  flex justify-center items-center px-[1rem] gap-[1rem]">
                 <div class="text-[#4C49ED] text-[12px] whitespace-nowrap">
                     View Details
                 </div>
@@ -99,7 +102,7 @@
                             <option value="FR">Refunded</option>
                         </select>
                     </div>
-                   
+
                 </div>
             </div>
 
@@ -122,8 +125,7 @@
     <div class="relative overflow-x-auto sm:rounded-lg">
 
         <table class="w-full text-[14px] leading-[150%] text-[#4B5563] text-left">
-            <thead
-                class="text-[14px] italic font-[100]  text-[#374151] uppercase bg-[#fff]">
+            <thead class="text-[14px] italic font-[100]  text-[#374151] uppercase bg-[#fff]">
                 <tr class="border-b">
                     <th scope="col" class="p-[2rem]">
                         <div class="flex items-center">
@@ -152,8 +154,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let terminal of data"
-                    class="bg-white border-b hover:bg-gray-50">
+                <tr *ngFor="let terminal of data" class="bg-white border-b hover:bg-gray-50">
                     <td class="w-4 p-[2rem]">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-3" type="checkbox"
@@ -228,19 +229,33 @@
 
             </tbody>
         </table>
-        <div class="mt-[4rem] bg-[#fff] flex justify-between p-[1rem] px-[2rem]">
-            <div>
+        <div class="mt-[4rem] bg-[#fff] flex justify-between items-center p-[1rem] px-[2rem]">
+            <div class="flex items-center gap-[1rem]">
                 <span> {{totalNumOfEntry}} Result</span>
+
+                <div class="p-[1rem] py-[0.5rem] flex items-center bg-[#fff] rounded-[12px]">
+                    <span class="whitespace-nowrap">Rows per page: </span>
+                    <select (change)="getSize(terminalFilterRequest.size)" [(ngModel)]="terminalFilterRequest.size"
+                        class=" outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <option value=5 selected>5</option>
+                        <option value=10>10</option>
+                        <option value=20>20</option>
+                    </select>
+                </div>
             </div>
+
             <div class="flex justify-end gap-[2rem]">
-                <div (click)="previousPage()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
+                <div (click)="previousPage()" class="cursor-pointer p-[1rem] py-[0.5rem] border rounded-[4px]">
                     Previous
                 </div>
-                <div (click)="nextPage()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
+                <div (click)="nextPage()" class="cursor-pointer p-[1rem] py-[0.5rem] border rounded-[4px]">
                     Next
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </div>
 

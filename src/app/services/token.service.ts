@@ -9,11 +9,11 @@ export class TokenService {
  
 
   static getToken(): string | null {
-    return localStorage.getItem('token'); // Example using localStorage
+    return localStorage.getItem('token'); 
   }
 
   static setToken(val: string): void | null {
-    return localStorage.setItem('token', val); // Example using localStorage
+    return localStorage.setItem('token', val);
   }
 
   static isTokenExpired(token: string): boolean {

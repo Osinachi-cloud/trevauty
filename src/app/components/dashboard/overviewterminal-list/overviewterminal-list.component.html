@@ -35,25 +35,25 @@
                             <img src="/assets/images/Gumroad 1.png" />
                         </div>
                         <div class="td_locatn pl-[8px] flex items-center">
-                            <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal.source}}</p>
+                            <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal?.location}}</p>
                         </div>
                     </div>
 
                     <div class="td_values bg-[#fff] col-span-1 text-center flex items-center">
-                        <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal.visitors}}K</p>
+                        <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal?.visitors}}K</p>
                         <!-- <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]"></p> -->
                     </div>
 
                     <div class="green font-[Satoshi] text-[16px] leading-[24px] col-span-1 text-center flex items-center text-[#10B981]">
-                        <p>${{terminal.revenue}}</p>
+                        <p>${{terminal?.revenues}}</p>
                     </div>
 
                     <div class="td_values_2 text-center flex items-center">
-                        <p>{{terminal.sales}}</p>
+                        <p>{{terminal?.sales}}</p>
                     </div>
 
                     <div class="blue font-[Satoshi] text-[16px] leading-[24px] col-span-1 text-center flex items-center text-[#259AE6] pl-[10px]">
-                        <p>{{terminal.conversion}}%</p>
+                        <p>{{terminal?.conversion}}%</p>
                     </div>
 
                 </div>
@@ -95,10 +95,10 @@
         <div class="t_row grid grid-cols-11 py-[10px] px-[5px] pr-[28px]">
             <div class="venue col-span-3 gird place-items-center">
                 <div class="place">
-                    <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal.terminal}}</p>
+                    <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal.location}}</p>
                 </div>
                 <div class="amt">
-                    <p class="font-[Satoshi] leading-[22px] text-[#64748B] font-[500]">${{terminal.amount}}</p>
+                    <!-- <p class="font-[Satoshi] leading-[22px] text-[#64748B] font-[500]">${{terminal.amount}}</p> -->
                 </div>
             </div>
             <div class="date col-span-3 flex items-center">

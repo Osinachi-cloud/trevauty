@@ -44,16 +44,24 @@ export class NewterminalrequestComponent {
       this.terminalRequestForm.controls[i].markAsTouched();
     }
 
+    // resetFormInputs() {
+    //   this.terminalRequestForm.setValue({
+    //     operatorsFirstName: '',
+    //     operatorsLastName: '',
+    //     locationOfTerminal: '',
+    //     nameOfTerminal: '',
+    //     operatorsPhoneNumber: '',
+    //     noteToTreVauty: '',
+    //   });
+    // }
+
     resetFormInputs() {
-      this.terminalRequestForm.setValue({
-        operatorsFirstName: '',
-        operatorsLastName: '',
-        locationOfTerminal: '',
-        nameOfTerminal: '',
-        operatorsPhoneNumber: '',
-        noteToTreVauty: '',
+      this.terminalRequestForm.reset(); // Reset the entire form
+      Object.keys(this.terminalRequestForm.controls).forEach(key => {
+          this.terminalRequestForm.get(key)?.setErrors(null); // Clear any validation errors
       });
-    }
+  }
+
 
     showSuccess() {
       this.toast.success({detail:"SUCCESS",summary:this.apiResponse.displayMessage ,duration:5000});

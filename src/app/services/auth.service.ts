@@ -90,6 +90,15 @@ export class AuthService {
     return this.http.post<any>(`${baseURL}api/v1/authenticate/auth`, authCredentials);
   }
 
+  profileSetting(userDetails:any): Observable<any>{
+    console.log("hello world");
+    const headers = new HttpHeaders()
+    .append('Content-Type', 'application/json')
+    return this.http.post<any>(`${baseURL}api/v1/profile/account_setting_profile`, userDetails);
+  }
+
+  
+
   validateToken(tokenDetails: any): Observable<any>{
     console.log("token ===>> " + TokenService.getToken());
     const headers = new HttpHeaders({

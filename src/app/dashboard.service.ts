@@ -127,7 +127,6 @@ export class DashboardService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${TokenService.getToken()}`
       });
-      console.log({headers});
       return this.http.post<any>(`${baseURL}api/v1/analytic/dashboard`, {body: {}}, { headers: headers });
     }
 

@@ -48,23 +48,33 @@ export class NewRefundFormComponent {
       this.terminalRequestForm.controls[i].markAsTouched();
     }
 
+    // resetFormInputs() {
+    //   this.terminalRequestForm.setValue({
+    //     customersFirstName: '',
+    //     customersLastName: '',
+    //     locationOfTerminal: '',
+    //     nameOfTerminal: '',
+    //     customersPhoneNumber: '',
+    //     noteToTreVauty: '',
+    //     operatorsName: '', 
+    //     disputedAMount:'', 
+    //     dateAndTimeOfTransaction:'',
+
+    //   });
+    // }
+
     resetFormInputs() {
-      this.terminalRequestForm.setValue({
-        customersFirstName: '',
-        customersLastName: '',
-        locationOfTerminal: '',
-        nameOfTerminal: '',
-        customersPhoneNumber: '',
-        noteToTreVauty: '',
-        operatorsName: '', 
-        disputedAMount:'', 
-        dateAndTimeOfTransaction:'',
-
+      this.terminalRequestForm.reset(); // Reset the entire form
+      Object.keys(this.terminalRequestForm.controls).forEach(key => {
+          this.terminalRequestForm.get(key)?.setErrors(null); // Clear any validation errors
       });
-    }
+  }
 
-    showSuccess() {
-      this.toast.success({detail:"SUCCESS",summary:this.apiResponse.displayMessage ,duration:5000});
+    showSuccessResponse(message: string, header: string, duration: number) {
+      this.toast.success({ detail: message, summary: header, duration: duration });
+    }
+    showErrorResponse(message: string, header: string, duration: number) {
+      this.toast.error({ detail: message, summary: header, duration: duration });
     }
 
     onSubmit(user: any): void {
@@ -73,16 +83,22 @@ export class NewRefundFormComponent {
           this.terminalService.terminalRefundRequest(this.terminalRequestForm.value).subscribe({
             next: (response: any) => {
               console.log("response =>>>>", response);
+              if(response.status){
               this.apiResponse = response;
               console.log(this.apiResponse);
               this.resetFormInputs();
-              this.showSuccess()
+              this.showSuccessResponse( "Submit Terminal Request", response.debugMessage, 6000);
               this.toggleModal();
+              }else{
+              this.showErrorResponse( "Submit Terminal Request", response.debugMessage, 6000);
+
+              }
               
               // this.router.navigate(['login']);
             },
             error: (error: any) => {
               console.log("sign up failed", error);
+              this.showErrorResponse(error.detail, error.title, 3000);
               this.router.navigate([]);
             }
           });
