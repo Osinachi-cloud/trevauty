@@ -69,7 +69,7 @@ export class TerminalService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.post<any>(`${baseURL}api/v1/customer/top-terminals`,{ headers:headers }, {});
+    return this.http.post<any>(`${baseURL}api/v1/terminal/top-terminals`,{},{ headers:headers });
   }
 
   customerTerminals(){
@@ -79,7 +79,7 @@ export class TerminalService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${TokenService.getToken()}`
     });
-    return this.http.post<any>(`${baseURL}api/v1/customer/terminals`,{ headers:headers }, {});
+    return this.http.post<any>(`${baseURL}api/v1/terminal/terminals`, {}, { headers:headers });
   }
 
   getTransactions(page: number, size:number): Observable<any>{

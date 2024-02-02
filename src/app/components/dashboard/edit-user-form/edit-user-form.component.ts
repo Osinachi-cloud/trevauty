@@ -15,13 +15,13 @@ export class EditUserFormComponent {
   userProfileDetails: FormGroup;
   apiResponse: any;
 
-  constructor( 
+  constructor(
     private http: HttpClient,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toast: NgToastService
-    ){
+  ) {
     this.userProfileDetails = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', Validators.required),
@@ -45,41 +45,51 @@ export class EditUserFormComponent {
   resetFormInputs() {
     this.userProfileDetails.reset();
     Object.keys(this.userProfileDetails.controls).forEach(key => {
-        this.userProfileDetails.get(key)?.setErrors(null); 
+      this.userProfileDetails.get(key)?.setErrors(null);
     });
-}
+  }
 
-  validateForm(){
-    for(let i in this.userProfileDetails.controls)
-  this.userProfileDetails.controls[i].markAsTouched();
+  showSuccessResponse(message: string, header: string, duration: number) {
+    this.toast.success({ detail: message, summary: header, duration: duration });
+  }
+  showErrorResponse(message: string, header: string, duration: number) {
+    this.toast.error({ detail: message, summary: header, duration: duration });
+  }
+
+  validateForm() {
+    for (let i in this.userProfileDetails.controls)
+      this.userProfileDetails.controls[i].markAsTouched();
   }
 
   showSuccess() {
-    this.toast.success({detail:"SUCCESS",summary:this.apiResponse.displayMessage ,duration:5000});
+    this.toast.success({ detail: "SUCCESS", summary: this.apiResponse.displayMessage, duration: 5000 });
   }
 
   onSubmit(user: any): void {
-      if (this.userProfileDetails.valid) {
-        console.log({ user });
-        this.authService.profileSetting(this.userProfileDetails.value).subscribe({
-          next: (response) => {
-            console.log("response =>>>>", response);
-            this.apiResponse = response;
-            console.log(this.apiResponse);
+    if (this.userProfileDetails.valid) {
+      console.log({ user });
+      this.authService.profileSetting(this.userProfileDetails.value).subscribe({
+        next: (response) => {
+          console.log("response =>>>>", response);
+          this.apiResponse = response;
+          console.log(this.apiResponse);
+
+          if (response.status) {
+            this.showSuccessResponse("Reset Password", response.data, 5000);
             this.resetFormInputs();
-            this.showSuccess()
-            
-          },
-          error: (error) => {
-            console.log("sign up failed", error);
-            this.resetFormInputs();
-            // this.router.navigate([]);
+          } else {
+            this.showErrorResponse("Reset Password", response.debugMessage || "failed Request", 5000);
           }
-        });
-      } else {
-        console.log(user);
-        this.validateForm();
-      }
+        },
+        error: (error) => {
+          console.log("sign up failed", error);
+          this.showErrorResponse("Reset Password", error.debugMessage || "failed Request", 5000);
+        }
+      });
+    } else {
+      console.log(user);
+      this.validateForm();
     }
+  }
 
 }

@@ -1,21 +1,21 @@
 <div class="md:w-[50%] w-[100%] mt-[3rem]">
     <form [formGroup]="passwordResetDetails" (ngSubmit)="onSubmit(passwordResetDetails.value)" action="" class="w-[80%] grid gap-[3rem]">
-        <div [ngClass]="{'has-error': !formData['password'].valid && formData['password'].touched}">
+        <div [ngClass]="{'has-error': !formData['oldPassword'].valid && formData['oldPassword'].touched}">
             <div class="text-[#4C535F]">
                 <label for="">Password</label>
             </div>
-            <div class="border-none " *ngIf="formData['password'].touched && formData['password'].errors">
+            <div class="border-none " *ngIf="formData['oldPassword'].touched && formData['oldPassword'].errors">
                 <div class="shadow-none border-none  text-danger"
-                    *ngIf="formData['password'].errors['required']">
+                    *ngIf="formData['oldPassword'].errors['required']">
                     Password is required
                 </div>
-                <div class="shadow-none text-danger" *ngIf="formData['password'].errors['pattern']">
+                <div class="shadow-none text-danger" *ngIf="formData['oldPassword'].errors['pattern']">
             
                     Password is not valid
                 </div>
             </div>
             <div class="flex bg-[#FCFCFC] p-[1.5rem] rounded-[7.69px] border">
-                <input [type]="password" placeholder="Please enter your password" class="bg-[transparent] w-[95%]" formControlName="password" name="password">
+                <input [type]="password" placeholder="Please enter your password" class="bg-[transparent] w-[95%]" formControlName="oldPassword" name="password">
                 <span>
                     <img (click)="toggleShowPassword()" src="/assets/images/showPassword.png" alt="">
                 </span>
@@ -47,24 +47,24 @@
             </div>
         </div>
 
-        <div [ngClass]="{'has-error': !formData['confirmNewPassword'].valid && formData['confirmNewPassword'].touched}">
+        <div [ngClass]="{'has-error': !formData['confirmPassword'].valid && formData['confirmPassword'].touched}">
             <div class="text-[#4C535F]">
                 <label for="">Confirm New Password</label>
             </div>
         
-            <div class="border-none " *ngIf="formData['confirmNewPassword'].touched && formData['confirmNewPassword'].errors">
+            <div class="border-none " *ngIf="formData['confirmPassword'].touched && formData['confirmPassword'].errors">
                 <div class="shadow-none border-none  text-danger"
-                    *ngIf="formData['confirmNewPassword'].errors['required']">
+                    *ngIf="formData['confirmPassword'].errors['required']">
                     Password is required
                 </div>
-                <div class="shadow-none text-danger" *ngIf="formData['confirmNewPassword'].errors['pattern']">
+                <div class="shadow-none text-danger" *ngIf="formData['confirmPassword'].errors['pattern']">
             
                     Password is not valid
                 </div>
             </div>
         
             <div class="flex bg-[#FCFCFC] p-[1.5rem] rounded-[7.69px] border">
-                <input [type]="confirmNewPassword" placeholder="Please enter your confirmNewPassword" formControlName="confirmNewPassword" class="bg-[transparent] w-[95%]">
+                <input [type]="confirmNewPassword" placeholder="Please enter your confirmPassword" formControlName="confirmPassword" class="bg-[transparent] w-[95%]">
                 <span>
                     <img (click)="toggleShowConfirmNewPassword()" src="/assets/images/showPassword.png" alt="">
                 </span>
@@ -183,16 +183,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <div *ngIf="showResetPasswordModal" class="overflow-x-hidden overflow-y-auto fixed top-0 left-0 inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
     <div class="relative w-full my-6 mx-auto max-w-3xl">
       <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -255,15 +245,12 @@
                         </div>
                     </div>
 
-
-
             </div>
             <div class="py-[2rem] w-[100%] flex justify-center">
                 <button type="submit" class="bg-[#7B57FC] w-[80%] m-auto text-[#fff] py-[0.8rem] px-[4rem] text-[16px] rounded-[8.4px]">Update</button>
             </div>
 
         </form>
-
 
         </div>
         <div class="flex items-center justify-end p-6 rounded-b">
@@ -272,5 +259,8 @@
     </div>
   </div>
   <div *ngIf="showResetPasswordModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
+<ng-toast></ng-toast>
+
 
 

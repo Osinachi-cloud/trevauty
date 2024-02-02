@@ -34,9 +34,9 @@ export class ProfileAuthComponent {
     private toast: NgToastService
   ) {
     this.passwordResetDetails = new FormGroup({
-      password: new FormControl('', [Validators.required]),
+      oldPassword: new FormControl('', [Validators.required]),
       newPassword: new FormControl('', [Validators.required]),
-      confirmNewPassword : new FormControl('', [Validators.required])
+      confirmPassword : new FormControl('', [Validators.required])
     })
 
     this.forgotPasswordDetails = new FormGroup({
@@ -95,8 +95,15 @@ export class ProfileAuthComponent {
     });
 }
 
-  showSuccess() {
-    this.toast.success({detail:"SUCCESS",summary:this.apiResponse.displayMessage ,duration:5000});
+  // showSuccess() {
+  //   this.toast.success({detail:"SUCCESS",summary:this.apiResponse.displayMessage ,duration:5000});
+  // }
+
+  showSuccessResponse(message: string, header: string, duration: number) {
+    this.toast.success({ detail: message, summary: header, duration: duration });
+  }
+  showErrorResponse(message: string, header: string, duration: number) {
+    this.toast.error({ detail: message, summary: header, duration: duration });
   }
 
   validateForm() {
@@ -126,14 +133,20 @@ export class ProfileAuthComponent {
   }
 
   onSubmit(passwordResetDetails: any) {
-    console.log(this.passwordResetDetails);
+    console.log(this.passwordResetDetails.value);
     if (this.passwordResetDetails.valid) {
-      this.authService.accountLogin(passwordResetDetails).subscribe({
+      this.authService.updatePassword(passwordResetDetails).subscribe({
         next: (res: any) => {
           console.log(res);
-          this.resetFormInput();
+          if(res.status){
+            this.showSuccessResponse( "Reset Password",  res.data, 5000);
+            this.resetFormInput();
+          }else{
+          this.showErrorResponse( "Reset Password",res.debugMessage, 5000);
+          }
         },
         error: (err: any) => {
+          this.showErrorResponse("Reset Password",err.debugMessage,  5000);
           console.log(err)
         }
 

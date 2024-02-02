@@ -31,8 +31,8 @@ export class OverviewterminalListComponent implements OnInit {
 
   getTopTerminals(){
     this.terminalService.getTopTerminals().subscribe({
-      next:(items: any)=>{
-          this.topTerminalData = items;
+      next:(res: any)=>{
+          this.topTerminalData = res?.data?.content;
       },
       error:(items:any)=>{
 
@@ -42,8 +42,8 @@ export class OverviewterminalListComponent implements OnInit {
 
   getCustomerTerminals(){
     this.terminalService.customerTerminals().subscribe({
-      next:(items: any)=>{
-          this.dataTerminal = items;
+      next:(res: any)=>{
+          this.dataTerminal = res.data.content;
       },
       error:(items:any)=>{
 

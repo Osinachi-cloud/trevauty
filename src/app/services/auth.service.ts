@@ -90,6 +90,17 @@ export class AuthService {
     return this.http.post<any>(`${baseURL}api/v1/authenticate/auth`, authCredentials);
   }
 
+  updatePassword(authCredentials:any): Observable<any>{
+    // console.log("hello world");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getToken()}`
+    });
+    console.log(headers);
+    return this.http.post<any>(`${baseURL}api/v1/profile/update_password`,authCredentials, {headers: headers});
+  }
+
+
   profileSetting(userDetails:any): Observable<any>{
     console.log("hello world");
     const headers = new HttpHeaders()

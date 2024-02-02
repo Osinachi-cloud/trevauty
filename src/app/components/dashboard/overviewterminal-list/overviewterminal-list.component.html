@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="td_values bg-[#fff] col-span-1 text-center flex items-center">
-                        <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal?.visitors}}K</p>
+                        <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]">{{terminal?.visitors}}</p>
                         <!-- <p class="font-[Satoshi] font-[500] text-[16px] leading-[24px] text-[#1C2434]"></p> -->
                     </div>
 
@@ -104,9 +104,17 @@
             <div class="date col-span-3 flex items-center">
                 <p class="font-[Satoshi] text-[16px] leading-[24px] text-[#1C2434]">{{terminal.invoiceDate}}</p>
             </div>
-            <div class="stat col-span-3 flex  items-center">
-                <p class="font-[Inter] font-[500] rounded-[8px] leading-[22px] py-[5px] px-[15px] bg-[#EDF7F1]  text-[#219653]">{{terminal.status}}</p>
+
+
+            <div class="stat col-span-3 flex items-center">
+                <p class="font-[Inter] font-[500] rounded-[8px] leading-[22px] py-[5px] px-[15px] 
+                    {{terminal.status === 'paid' ? 'bg-[lightgreen] text-[green]' : 
+                    (terminal.status === 'unpaid' ? 'bg-[#f9eaea] text-[red]' : '') }}">
+                    {{terminal.status}}
+                </p>
             </div>
+
+
             <div class="action_img image flex items-center col-span-2">
                 <div class="eye_icon pr-[18px]">
                     <img src="/assets/images/eye.png" />
