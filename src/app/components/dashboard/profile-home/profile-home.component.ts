@@ -18,11 +18,11 @@ export class ProfileHomeComponent {
             link: '/dashboard/profile/user',
             index: 0
         }, 
-        {
-            label: 'Account Settings',
-            link: '/dashboard/profile/edit-user',
-            index: 1
-        },
+        // {
+        //     label: 'Account Settings',
+        //     link: '/dashboard/profile/edit-user',
+        //     index: 1
+        // },
         {
           label: 'Login & Security',
           link: '/dashboard/profile/auth',
@@ -42,3 +42,10 @@ export class ProfileHomeComponent {
   }
 
 }
+
+
+
+
+// *785#
+// 4
+// 2

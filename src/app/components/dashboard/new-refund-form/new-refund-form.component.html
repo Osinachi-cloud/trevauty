@@ -180,13 +180,16 @@
                 </div>
             </div>
 
-            <div class="w-full" [ngClass]="{'has-error': !formData['dateAndTimeOfTransaction'].valid && formData['dateAndTimeOfTransaction'].touched}">
+            <div class="w-full"
+                [ngClass]="{'has-error': !formData['dateAndTimeOfTransaction'].valid && formData['dateAndTimeOfTransaction'].touched}">
                 <div>
                     <label class="leading-[22px] text-[#212B36] font-[500]" for="">
                         Date and Time of Transcation</label>
                 </div>
-                <div class="border-none " *ngIf="formData['dateAndTimeOfTransaction'].touched && formData['dateAndTimeOfTransaction'].errors">
-                    <div class="shadow-none border-none  text-danger" *ngIf="formData['dateAndTimeOfTransaction'].errors['required']">
+                <div class="border-none "
+                    *ngIf="formData['dateAndTimeOfTransaction'].touched && formData['dateAndTimeOfTransaction'].errors">
+                    <div class="shadow-none border-none  text-danger"
+                        *ngIf="formData['dateAndTimeOfTransaction'].errors['required']">
                         Date and time of the transcation is required
                     </div>
                     <div class="shadow-none text-danger" *ngIf="formData['dateAndTimeOfTransaction'].errors['pattern']">
@@ -197,17 +200,21 @@
                 <div class="border rounded-[4px] border-[#E2E8F0] p-[1.5rem]">
 
                     <input class="outline-none w-[100%]" type="datetime-local"
-                        placeholder="Enter date and time of the transcation" name="dateAndTimeOfTransaction" formControlName="dateAndTimeOfTransaction">
+                        placeholder="Enter date and time of the transcation" name="dateAndTimeOfTransaction"
+                        formControlName="dateAndTimeOfTransaction">
                 </div>
             </div>
 
-            <div class="w-full" [ngClass]="{'has-error': !formData['noteToTreVauty'].valid && formData['noteToTreVauty'].touched}">
+            <div class="w-full"
+                [ngClass]="{'has-error': !formData['noteToTreVauty'].valid && formData['noteToTreVauty'].touched}">
                 <div>
                     <label class="leading-[22px] text-[#212B36] font-[500]" for="">
                         Note to Trevauty</label>
                 </div>
-                <div class="border-none " *ngIf="formData['noteToTreVauty'].touched && formData['noteToTreVauty'].errors">
-                    <div class="shadow-none border-none  text-danger" *ngIf="formData['noteToTreVauty'].errors['required']">
+                <div class="border-none "
+                    *ngIf="formData['noteToTreVauty'].touched && formData['noteToTreVauty'].errors">
+                    <div class="shadow-none border-none  text-danger"
+                        *ngIf="formData['noteToTreVauty'].errors['required']">
                         Note to Trevauty is required
                     </div>
                     <div class="shadow-none text-danger" *ngIf="formData['noteToTreVauty'].errors['pattern']">
@@ -215,13 +222,25 @@
                         Note to Trevauty is not valid
                     </div>
                 </div>
+
+                <div  class="rounded-[4px] border-[#E2E8F0] py-[1rem]">
+
+                    <label for="evidence">Passport Image:</label>
+                    <input type="file" (change)="onFileSelected($event)" accept="image/*"
+                        formControlName="evidence">
+
+                    <img *ngIf="selectedFile" [src]="imagePreview" alt="Selected Image">
+                </div>
                 <div class="border rounded-[4px] border-[#E2E8F0] p-[1.5rem]">
 
-            <textarea class="outline-none w-[100%]" type="text" placeholder="Enter Comment" name="noteToTreVauty"
-                formControlName="noteToTreVauty">
+                    <!-- <input type="file" name="proofOfTransaction" formControlName="proofOfTransaction" accept="image/*"> -->
+
+
+                    <textarea class="outline-none w-[100%]" type="text" placeholder="Enter Comment"
+                        name="noteToTreVauty" formControlName="noteToTreVauty">
 
                     </textarea>
-            </div>
+                </div>
             </div>
 
             <div class="w-[100%]">
@@ -231,6 +250,8 @@
                 <button type="submit" class="bg-[#7B57FC] text-[#fff] w-[100%] p-[1rem] rounded-[4px]">Request
                     Terminal</button>
             </div>
+
+
         </form>
     </div>
     <app-modal [showModal]="showModal" (closeModal)="toggleModal()"></app-modal>
