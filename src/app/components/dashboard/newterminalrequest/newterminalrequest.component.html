@@ -80,10 +80,21 @@
                         The Name of Terminal is not valid
                     </div>
                 </div>
-                <div class="border rounded-[4px] border-[#E2E8F0] p-[1.5rem]">
+                <!-- <div class="border rounded-[4px] border-[#E2E8F0] p-[1.5rem]">
             
                     <input class="outline-none w-[100%]" type="text" placeholder="Enter operator's first name"  name="nameOfTerminal" formControlName="nameOfTerminal">
+                </div> -->
+
+                <div class="border border-[#E2E8F0]  md:col-span-2 col-span-1 p-[2rem] py-[0.5rem] bg-[#fff] rounded-[4px]">
+                    <select id="countries" formControlName="nameOfTerminal" name="nameOfTerminal"
+                        class=" outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <option selected>
+                            <span>Select Provider</span>
+                        </option>
+                        <option value={{provider.providerName}} *ngFor="let provider of providerList">{{provider.providerName}}</option>
+                    </select>
                 </div>
+
             </div>
 
             <div class="w-full" [ngClass]="{'has-error': !formData['operatorsPhoneNumber'].valid && formData['operatorsPhoneNumber'].touched}">

@@ -40,7 +40,7 @@ export const navbarData: INavbarData[] = [
     {
         routeLink: 'analytic',
         icon: 'fas fa-chart-line',
-        label: 'Analytic'
+        label: 'Transactions'
     },
     {
         routeLink: 'manage-terminal',

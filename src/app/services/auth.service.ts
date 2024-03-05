@@ -147,7 +147,6 @@ export class AuthService {
     return this.http.get<any>(this.singupUrl);
   }
 
-
 }
 
 

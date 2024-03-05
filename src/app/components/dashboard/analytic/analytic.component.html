@@ -18,7 +18,7 @@
     <div class="grid lg:grid-cols-4 grid-cols-1 gap-[2rem]">
         <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
             <div class="text-[#A1A0BD] lg:text-[18px]">Total Income</div>
-            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">N {{analyticsOverview?.totalIncome}}
+            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">₦ {{analyticsOverview?.totalIncome}}
                 <span></span>
             </p>
             <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
@@ -31,7 +31,7 @@
 
         <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
             <div class="text-[#A1A0BD] lg:text-[18px]">Total Transactions</div>
-            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.terminal}}</p>
+            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">₦{{analyticsOverview?.totalTransaction}}</p>
             <div class="bg-[#F5DCDC] rounded-[19px] text-[#D14F4F] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
                 <div class="flex justify-center">
                     <!-- <img src="/assets/images/graphArrowDown.png" alt=""> -->
@@ -42,7 +42,7 @@
         </div>
         <div class="bg-[#fff] rounded-[11px] pb-[1rem] p-[2rem]  grid gap-[1rem]">
             <div class="text-[#A1A0BD] lg:text-[18px] ">Total Terminals</div>
-            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.totalTransaction}}</p>
+            <p class="leading-[35px] font-[800] color-[#000] text-[29px]">{{analyticsOverview?.terminal}}</p>
             <div class="bg-[#DCF5E8] rounded-[19px] text-[#4FD18B] w-fit h-fit flex justify-center p-[1rem] gap-[1rem]">
                 <div class="flex justify-center">
                     <!-- <img src="/assets/images/graphArrowUp.png" alt=""> -->
@@ -135,7 +135,7 @@
                         </div>
                     </th>
                     <th scope="col" class="p-[2rem]">
-                        Payment Id
+                        Terminal Name
                     </th>
                     <th scope="col" class="p-[2rem]">
                         Status
@@ -163,7 +163,7 @@
                         </div>
                     </td>
                     <th scope="row" class="p-[2rem] font-medium text-gray-900 whitespace-nowrap">
-                        {{terminal.paymentId}}
+                        {{terminal.name}}
                     </th>
                     <td class="p-[1rem]">
 

@@ -17,11 +17,15 @@ export class SignupComponent {
   showConfirmPassword: boolean = false;
   password:string = "password";
   confirmPassword:string = "password";
+  message:string = "";
+
 
   constructor( private http: HttpClient,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private toast: NgToastService
+
     ) {
     this.myform = new FormGroup({
        firstName: new FormControl('',	[Validators.required]),
@@ -105,7 +109,12 @@ resetFormInputs() {
 //   }
 // }
 
-
+showSuccessResponse(message: string, header: string, duration: number) {
+  this.toast.success({ detail: message, summary: header, duration: duration });
+}
+showErrorResponse(message: string, header: string, duration: number) {
+  this.toast.error({ detail: message, summary: header, duration: duration });
+}
 
 onSubmit(user: any): void {
   if (this.myform.valid) {
@@ -114,6 +123,9 @@ onSubmit(user: any): void {
       next: (response) => {
         console.log("response =>>>>", response);
         // this.resetFormInputs();
+        this.message = response?.response;
+        this.showSuccessResponse(this.message, "Login", 3000);
+
         this.myform.markAsPristine(); // Reset form state
         this.myform.markAsUntouched(); // Reset form state
         this.router.navigate(['login']);

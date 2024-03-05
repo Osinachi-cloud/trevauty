@@ -17,6 +17,8 @@ export class NewterminalrequestComponent {
   showModal = false;
   terminalRequestForm: FormGroup;
   apiResponse: any;
+  providerList : any[] = [];
+
 
 
   constructor(
@@ -94,6 +96,8 @@ export class NewterminalrequestComponent {
 
   ngOnInit() {
       this.bodyText = 'This text can be updated in modal 1';
+    this.getProviders();
+
   }
 
   openModal(id: string) {
@@ -106,6 +110,19 @@ export class NewterminalrequestComponent {
 
   toggleModal(): void {
     this.showModal = !this.showModal;
+  }
+
+  getProviders(){
+    this.terminalService.getProviders().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.providerList = response;
+      },
+      error: (items: any) => {
+        console.log(items)
+
+      }
+    })
   }
 
 

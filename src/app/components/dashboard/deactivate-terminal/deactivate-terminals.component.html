@@ -42,7 +42,7 @@
                         </div>
                     </td>
                     <td scope="row" class="p-[2rem] font-medium text-gray-900 whitespace-nowrap">
-                        {{terminal.terminal}}
+                        {{terminal.location}}
 
                     </td>
 
@@ -52,7 +52,7 @@
                         </div>
                     </td>
                     <td class="p-[2rem]">
-                        {{terminal.activationDate}}
+                        {{terminal.invoiceDate}}
                     </td>
                     <td class="p-[1rem]">
                         <div *ngIf=" terminal.status === 'Deactived' "
@@ -65,11 +65,11 @@
                         </div>
                     </td>
                     <td class="p-[2rem]">
-                        <div (click)="toggleTerminalActiveState(terminal.action)" *ngIf=" terminal.action === 'Activate' "
+                        <div (click)="toggleTerminalActiveState(terminal.location)" *ngIf=" terminal.status === 'Activate' "
                             class="bg-[#F3F0FF] cursor-pointer p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
                             <span class="text-[#7535FD] font-[700]">{{terminal.action}}</span>
                         </div>
-                        <div (click)="toggleTerminalActiveState(terminal.action)" *ngIf=" terminal.action === 'Deactivate' "
+                        <div (click)="toggleTerminalActiveState(terminal.location)" *ngIf=" terminal.status === 'Deactivate' "
                             class="bg-[#E7EAEE] cursor-pointer px-[1rem] py-[1rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
                             <span class="text-[#64748B]">{{terminal.action}}</span>
                         </div>

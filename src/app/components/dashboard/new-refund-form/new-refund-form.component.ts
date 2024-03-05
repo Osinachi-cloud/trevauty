@@ -20,6 +20,13 @@ export class NewRefundFormComponent {
   selectedFile: any | null = null;
   imagePreview: any = "";
 
+  providerList : any[] = [];
+
+  ngOnInit() {
+    this.bodyText = 'This text can be updated in modal 1';
+    this.getProviders();
+  }
+
 
   constructor(
     private modalService: ModalService,
@@ -69,11 +76,6 @@ export class NewRefundFormComponent {
 
   onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    console.log("==========")
-
-    console.log(inputElement)
-
-    console.log("===========")
 
     const file: File | null = inputElement.files ? inputElement.files[0] : null;
 
@@ -160,9 +162,7 @@ export class NewRefundFormComponent {
     }
   }
 
-  ngOnInit() {
-    this.bodyText = 'This text can be updated in modal 1';
-  }
+
 
   openModal(id: string) {
     this.modalService.open(id);
@@ -174,6 +174,19 @@ export class NewRefundFormComponent {
 
   toggleModal(): void {
     this.showModal = !this.showModal;
+  }
+
+  getProviders(){
+    this.terminalService.getProviders().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.providerList = response;
+      },
+      error: (items: any) => {
+        console.log(items)
+
+      }
+    })
   }
 
 }

@@ -184,15 +184,15 @@
                         </div>
                     </td>
                     <td scope="row" class="p-[2rem] font-medium text-gray-900 whitespace-nowrap">
-                        {{terminal.terminal}}
+                        {{terminal.nameOfTerminal}}
                     </td>
                     <td class="p-[2rem]">
                         <div class="flex items-center gap-[1rem]">
-                            {{terminal.operator}}
+                            {{terminal.operatorsFirstName}}
                         </div>
                     </td>
                     <td class="p-[2rem]">
-                        {{terminal.activationDate}}
+                        {{terminal.requestedDates}}
                     </td>
                     <td class="p-[1rem]">
                         <div *ngIf=" terminal.status === 'Deactived' "

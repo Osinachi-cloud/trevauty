@@ -1,6 +1,6 @@
 <div>
     <div class="bg-[#fff] rounded-[2px] mt-[50px] md:w-[50%]">
-        <h1 class="p-[2rem] border-b">Terminal Request Form</h1>
+        <h1 class="p-[2rem] border-b">Refund Transaction Form</h1>
         <form [formGroup]="terminalRequestForm" (ngSubmit)="onSubmit(terminalRequestForm.value)"
             class="grid gap-[2rem] p-[2rem]">
             <div class="flex gap-[2rem] w-[100%]">
@@ -84,7 +84,7 @@
                     [ngClass]="{'has-error': !formData['disputedAMount'].valid && formData['disputedAMount'].touched}">
                     <div>
                         <label class="leading-[22px] text-[#212B36] font-[500]" for="">
-                            Customer's disputedAMount</label>
+                            Customer's disputed amount</label>
                     </div>
                     <div class="border-none "
                         *ngIf="formData['disputedAMount'].touched && formData['disputedAMount'].errors">
@@ -124,11 +124,20 @@
                             The Name of Terminal is not valid
                         </div>
                     </div>
-                    <div class="border rounded-[4px] border-[#E2E8F0] p-[1.5rem]">
 
-                        <input class="outline-none w-[100%]" type="text" placeholder="Enter customer's first name"
-                            name="nameOfTerminal" formControlName="nameOfTerminal">
+
+                    <div class="border border-[#E2E8F0]  md:col-span-2 col-span-1 p-[2rem] py-[0.5rem] bg-[#fff] rounded-[4px]">
+                        <select id="countries" formControlName="nameOfTerminal" name="nameOfTerminal"
+                            class=" outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <option>
+                                <span>Select Provider</span>
+                            </option>
+                            <option value={{provider.providerName}} *ngFor="let provider of providerList">{{provider.providerName}}</option>
+                        </select>
                     </div>
+
+
+
                 </div>
 
                 <div class="w-full"

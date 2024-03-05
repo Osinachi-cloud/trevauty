@@ -33,6 +33,15 @@ export class TerminalService {
   }
 
 
+  getProviders(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getToken()}`
+    });
+    return this.http.post<any>(`${baseURL}api/v1/provider/fetch`, {body:{}} );
+  }
+
+
 
   terminalRefundRequest(userDetails:any){
     console.log("hello world");
@@ -59,8 +68,15 @@ export class TerminalService {
     return this.http.get<any>('assets/data/terminalData.json');
   }
   
-  getActionTerminals(): Observable<any>{
-    return this.http.get<any>('assets/data/actionTerminal.json');
+  // getActionTerminals(): Observable<any>{
+  //   return this.http.get<any>('assets/data/actionTerminal.json');
+  // }
+  getActionTerminals(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getToken()}`
+    });
+    return this.http.post<any>(`${baseURL}api/v1/customer/terminals`,{},{ headers:headers });
   }
 
 
