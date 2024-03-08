@@ -24,7 +24,7 @@ export class DeactivateTerminalsComponent {
   getActionTerminals(){
     this.terminalService.getActionTerminals().subscribe({
       next:(items: any)=>{
-          this.data = items;
+          this.data = items.data.content;
       },
       error:(items:any)=>{
 
